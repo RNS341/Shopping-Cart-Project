@@ -1,8 +1,9 @@
 # Rob Sansone Shopping Cart Project
-
 # shopping_cart.py
 
 #from pprint import pprint
+
+import datetime
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -56,17 +57,36 @@ while True:
 #
 
 # print(selected_ids)
+print(2*"\n")
+print("-------------------")
+print("Ready to Graduate, Deli & Grocery")
+print("www.hadenoughdeli.com")
+print("-------------------")
+now = datetime.datetime.now()
+dt_string = now.strftime("%m/%d/%Y %H:%M:%S %p")
+print("Checkout at: " + str(dt_string))
+print("-------------------")
+print("Selected Products:")
+
+
+
 for selected_id in selected_ids:
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         matching_product = matching_products[0]
         total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+        print("+ " + matching_product["name"] + " " + "${0:.2f}".format(matching_product["price"]))
 
-print("Total Price: " + str(total_price))
-
-
-
-
+print("------------------")
+print("Subtotal: " + "${0:.2f}".format(total_price))
+tax = total_price * .0875
+print("Tax: " + "${0:.2f}".format(tax))
+grand_total = total_price + tax
+print("Grand Total: " + "${0:.2f}".format(grand_total))
+print("------------------")
+print("Thanks, see you again soon!")
+print("------------------")
+print("\n")
+    
 # A grocery store name of your choice
 # A grocery store phone number and/or website URL and/or address of choice
 # The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2019-06-06 11:31 AM)
