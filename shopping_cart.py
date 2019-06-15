@@ -37,20 +37,20 @@ products = [
 # Information Capture
 #
 
+valid_ids = [str(p["id"]) for p in products] # doing comparisons with string versions of these ids
+
 total_price = 0
 selected_ids = []
 
 while True:
-    selected_id = input("Please input a product identifier: ") #string version
+    selected_id = input("Please input a product identifier, write DONE when finished: ") #string version
     # If the word Done we want to stop
-    if selected_id == "DONE":
+    if selected_id == "DONE" or selected_id == "done" or selected_id == "Done":
         break
-    else:
-        # matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-        # matching_product = matching_products[0]
-        # total_price = total_price + matching_product["price"]
-        # print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))    
+    elif str(selected_id) in valid_ids:
         selected_ids.append(selected_id)
+    else:
+        print("We've detected invalid input! Please try again...")
 
 #
 # Information Display
@@ -86,7 +86,7 @@ print("------------------")
 print("Thanks, see you again soon!")
 print("------------------")
 print("\n")
-    
+
 # A grocery store name of your choice
 # A grocery store phone number and/or website URL and/or address of choice
 # The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2019-06-06 11:31 AM)
