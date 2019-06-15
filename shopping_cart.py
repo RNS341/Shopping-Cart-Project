@@ -1,8 +1,6 @@
 # Rob Sansone Shopping Cart Project
 # shopping_cart.py
 
-#from pprint import pprint
-
 import datetime
 
 products = [
@@ -28,23 +26,15 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-# print(products)
-# pprint(products)
 
-# TODO: write some Python code here to produce the desired output
-
-#
 # Information Capture
-#
-
-valid_ids = [str(p["id"]) for p in products] # doing comparisons with string versions of these ids
+valid_ids = [str(p["id"]) for p in products] 
 
 total_price = 0
 selected_ids = []
 
 while True:
     selected_id = input("Please input a product identifier, write DONE when finished: ") #string version
-    # If the word Done we want to stop
     if selected_id == "DONE" or selected_id == "done" or selected_id == "Done":
         break
     elif str(selected_id) in valid_ids:
@@ -52,23 +42,19 @@ while True:
     else:
         print("We've detected invalid input! Please try again...")
 
-#
-# Information Display
-#
 
-# print(selected_ids)
+# Information Display
+
 print(2*"\n")
 print("-------------------")
 print("Ready to Graduate, Deli & Grocery")
 print("www.hadenoughdeli.com")
 print("-------------------")
 now = datetime.datetime.now()
-dt_string = now.strftime("%m/%d/%Y %H:%M:%S %p")
+dt_string = now.strftime("%m/%d/%Y %I:%M:%S %p")
 print("Checkout at: " + str(dt_string))
 print("-------------------")
 print("Selected Products:")
-
-
 
 for selected_id in selected_ids:
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
