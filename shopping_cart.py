@@ -36,23 +36,27 @@ products = [
 # Information Capture
 #
 
+total_price = 0
+
 while True:
     selected_id = input("Please input a product identifier: ") #string version
     # If the word Done we want to stop
-    if selected_id == "Done":
+    if selected_id == "DONE":
         break
     else:
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         matching_product = matching_products[0]
         #print(matching_product)
         #print(type(matching_product))
+        total_price = total_price + matching_product["price"]
         print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))    
-
+        
 
 #
 # Information Display
 #
 
+print("Total Price: " + str(total_price))
 
 
 
